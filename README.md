@@ -14,6 +14,19 @@ In case you don't want to install the required components yourself, you can use 
 [![Code in Cardano Workspace](https://demeter.run/code/badge.svg)](https://demeter.run/code?repository=https://github.com/txpipe/python-dbsync-starter-kit.git&template=python)
 
 
+## What is Included
+
+We have included 6 python scripts with an specific use-case in each one of them:
+
+| Name                 | Description                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| `query-current-valid-pools`              | get the latest pool registration for every pool that is still valid together with its hash                        |
+| `query-latest-slot-no`             | Queries the latest available slot number                |
+| `query-total-supply`             | This just queries the UTxO set for unspent transaction outputs. It does not include staking rewards that have have not yet been withdrawn. Before being withdrawn rewards exist in ledger state and not on-chain          |
+| `tx-fee-tx-hash`         | Transaction fee for specified transaction hash in the preview network                                                 |
+| `tx-in-tx-hash`              | Transaction inputs for specified transaction hash                   |
+| `tx-out-tx-hash`              | Transaction outputs for specified transaction hash                    |
+
 ## Running the scripts
 
 Each script executes a simple query to DB-Sync and outputs the result in the terminal. 
@@ -42,7 +55,7 @@ conn = psycopg2.connect(database="cardanodbsync",
 
 ```
 
-For running a script you can run it from the terminal with the `python3` command:
+For running a script you can run it from the terminal with the `python3` command and the name of the script:
 
 ```bash
 python3 query-current-valid-pools.py
