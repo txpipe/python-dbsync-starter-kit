@@ -31,27 +31,18 @@ As you might have noticed, we installed the psycopg2-binary package, which is th
 
 Now we are going to use the DB-Sync feature of [Demeter.run](https://demeter.run) for establishing a connection.
 
-Navigate to the DB-Sync feature in the development console and take the values from the following fields:
-
-* private DNS Name
-* private port
-* user
-* password
-
-<img src="/assets/db-sync-settings-1.png" alt="db-sync-settings-1">
-<img src="/assets/db-sync-settings-2.png" alt="db-sync-settings-2">
-
-We are going to use these values to fill in the required inputs for connecting
+All the required inputs for establishing a connection are environment values available in the Workspace. We take advantage of this in `connection.py` where we establish the database connection. 
 
 ```python
 conn = psycopg2.connect(database="cardanodbsync",
-                        host=PRIVATE_DNS_NAME,
-                        user=USER,
-                        password=PASSWORD,
-                        port=PRIVATE PORT)
+                        host=os.environ['DBSYNC_POSTGRESQL_HOSTNAME'],
+                        user=os.environ["DBSYNC_POSTGRESQL_USER"],
+                        password=os.environ["DBSYNC_POSTGRESQL_PASSWORD"],
+                        port=os.environ["DBSYNC_POSTGRESQL_PORT"])
+
 ```
 
-That should be all the configuration we require. Now we are ready to execute any of the scripts. You can go back to the terminal and execute the following command:
+For running a script you can run it from the terminal with the `python3` command:
 
 ```bash
 python3 query-current-valid-pools.py
