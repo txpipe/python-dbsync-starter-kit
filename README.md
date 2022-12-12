@@ -37,7 +37,7 @@ Navigate to the DB-Sync feature in the development console and take the values f
 * private port
 * user
 * password
-* 
+
 <img src="/assets/db-sync-settings-1.png" alt="db-sync-settings-1">
 <img src="/assets/db-sync-settings-2.png" alt="db-sync-settings-2">
 
